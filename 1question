@@ -1,0 +1,35 @@
+import math
+from datetime import datetime
+
+def eq1a(x, C):
+    return (math.exp(x) * (x - 1) + C) / (x ** 2)
+
+def eq1b(x, C):
+    return x**2 * math.log(abs(x)) + C * x**2
+
+x_start = 0.1
+x_end = 5.0
+step = 0.1
+C_values = [-2, 0, 2]
+
+print("=== Equation 1a: y = (e^x(x - 1) + C) / x^2 ===")
+for C in C_values:
+    print(f"\nC = {C}")
+    print("x\t\ty")
+    x = x_start
+    while x <= x_end:
+        y = eq1a(x, C)
+        print(f"{x:.2f}\t{y:.5f}")
+        x = round(x + step, 5)
+
+print("\n=== Equation 1b: y = x^2 * ln|x| + C * x^2 ===")
+for C in C_values:
+    print(f"\nC = {C}")
+    print("x\t\ty")
+    x = x_start
+    while x <= x_end:
+        y = eq1b(x, C)
+        print(f"{x:.2f}\t{y:.5f}")
+        x = round(x + step, 5)
+
+print("\nGenerated on:", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
